@@ -39,7 +39,7 @@ Bynry Backend Engineering Intern Case Study | Rajeev Ranjan Yadav
 
 ```bash
 git clone https://github.com/RajeevRanjany/Bynry-Backend-Intern-Case-Study.git
-cd Rajeev_Ranjan_Backend_CaseStudy
+cd Bynry-Backend-Intern-Case-Study
 ```
 
 ### 2. Create `.env` file
@@ -48,7 +48,7 @@ cd Rajeev_Ranjan_Backend_CaseStudy
 cp .env.example .env
 ```
 
-No changes needed — default values work out of the box.
+No changes needed : default values will work out of the box.
 
 ### 3. Start PostgreSQL with Docker
 
@@ -72,7 +72,10 @@ pip install -r requirements.txt
 ### 5. Create database tables
 
 ```bash
-python3 -c "from app import create_app, db; app = create_app(); app.app_context().push(); db.create_all()"
+python3 -c "from app import create_app, db; 
+app = create_app(); 
+app.app_context().push(); 
+db.create_all()"
 ```
 
 ### 6. Seed test data (company + warehouse)
