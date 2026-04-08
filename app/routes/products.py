@@ -10,30 +10,16 @@ products_bp = Blueprint('products', __name__)
 
 @products_bp.route('/api/products', methods=['POST'])
 def create_product():
-    """
-    POST /api/products
-    Creates a new product and its initial inventory record in one atomic transaction.
-
-    Fix summary vs original code:
-    - Added input validation (was missing entirely)
-    - SKU uniqueness checked before insert (was causing unhandled IntegrityError)
-    - Removed warehouse_id from Product model (product can exist in many warehouses)
-    - Single db.session.commit() via flush() — original had two separate commits
-      which could leave a product with no inventory if the second commit failed
-    - Proper HTTP status codes (201, 400, 404, 409, 500)
-    """
     data = request.get_json()
     cleaned, error = validate_create_product(data)
 
     if error:
         return jsonify({"error": error}), 400
 
-    # Verify warehouse exists before doing anything
     warehouse = Warehouse.query.get(cleaned['warehouse_id'])
     if not warehouse:
         return jsonify({"error": "Warehouse not found"}), 404
 
-    # Explicit SKU check gives a cleaner error than catching IntegrityError
     if Product.query.filter_by(sku=cleaned['sku']).first():
         return jsonify({"error": "A product with this SKU already exists"}), 409
 
@@ -47,7 +33,7 @@ def create_product():
             company_id=warehouse.company_id,
         )
         db.session.add(product)
-        db.session.flush()  # assigns product.id without committing yet
+        db.session.flush()
 
         inventory = Inventory(
             product_id=product.id,
@@ -55,8 +41,7 @@ def create_product():
             quantity=cleaned['initial_quantity'],
         )
         db.session.add(inventory)
-
-        db.session.commit()  # single atomic commit
+        db.session.commit()
 
     except IntegrityError:
         db.session.rollback()

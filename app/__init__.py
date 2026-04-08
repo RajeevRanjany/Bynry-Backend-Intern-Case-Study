@@ -10,7 +10,6 @@ def create_app():
 
     db.init_app(app)
 
-    # Register blueprints
     from .routes.products import products_bp
     from .routes.alerts import alerts_bp
 
