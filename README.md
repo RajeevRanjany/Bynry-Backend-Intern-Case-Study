@@ -7,20 +7,20 @@ Bynry Backend Engineering Intern Case Study | Rajeev Ranjan Yadav
 
 ```
 ├── app/
-│   ├── __init__.py          # App factory, DB init, blueprint registration
-│   ├── app.py               # Entry point
-│   ├── config.py            # Environment-based config
-│   ├── models.py            # SQLAlchemy models
+│   ├── __init__.py          
+│   ├── app.py               
+│   ├── config.py            
+│   ├── models.py            
 │   ├── routes/
-│   │   ├── products.py      # POST /api/products
-│   │   └── alerts.py        # GET /api/companies/<id>/alerts/low-stock
+│   │   ├── products.py     
+│   │   └── alerts.py        
 │   └── utils/
-│       └── validators.py    # Input validation helpers
-├── Part1_Code_Review.md     # Bug analysis + fixes
-├── Part2_Database_Design.md # Schema design + decisions
-├── Part3_API_Implementation.md # API implementation notes
-├── docker-compose.yml       # PostgreSQL via Docker
-├── .env.example             # Environment variable template
+│       └── validators.py    
+├── Part1_Code_Review.md     
+├── Part2_Database_Design.md 
+├── Part3_API_Implementation.md 
+├── docker-compose.yml      
+├── .env.example             
 └── requirements.txt
 ```
 
@@ -30,7 +30,6 @@ Bynry Backend Engineering Intern Case Study | Rajeev Ranjan Yadav
 
 - Python 3.10+
 - Docker + Docker Compose
-- Git
 
 ---
 
@@ -39,7 +38,7 @@ Bynry Backend Engineering Intern Case Study | Rajeev Ranjan Yadav
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/Rajeev_Ranjan_Backend_CaseStudy.git
+git clone https://github.com/RajeevRanjany/Bynry-Backend-Intern-Case-Study.git
 cd Rajeev_Ranjan_Backend_CaseStudy
 ```
 
@@ -182,4 +181,4 @@ Response `200`:
 | `Part3_API_Implementation.md` | Low-stock alert endpoint with edge case handling |
 
 ## Author
-Rajeev Ranjan | MNNIT ALLAHABAD
+Rajeev Ranjan | MNNIT ALLAHABAD |
